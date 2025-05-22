@@ -34,18 +34,18 @@ jobs:
         with:
           node-version: 18
 
-      - name: 📦 Installer les dépendances Backend
+      - name:  Installer les dépendances Backend
         working-directory: ./TP_EVENT_API
         run: npm install
 
-      - name: 🧪 Lancer les tests Backend
+      - name:  Lancer le test Backend
         working-directory: ./TP_EVENT_API
         run: npm test
 
-      - name: 📦 Installer les dépendances Frontend
+      - name:  Installer les dépendances Frontend
         working-directory: ./TP_EVENT_WEB_APP
         run: npm install
 
-      - name: ⚙️ Build du frontend
+      - name:  Build du frontend
         working-directory: ./TP_EVENT_WEB_APP
         run: npm run build
