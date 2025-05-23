@@ -3,7 +3,7 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build-and-deploy:
@@ -34,7 +34,7 @@ jobs:
         key: ${{ secrets.REMOTE_SSH_KEY }}
         script: |
           cd ~/projet-devOps
-          git pull origin master
+          git pull origin main
           docker compose down
           docker compose pull
           docker compose up -d --build
