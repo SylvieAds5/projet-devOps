@@ -9,7 +9,6 @@ permissions:
   packages: write
 
 env:
- env:
   GHCR_IMAGE_FRONTEND: ghcr.io/${{ github.repository_owner.toLowerCase() }}/myapp-frontend
   GHCR_IMAGE_BACKEND: ghcr.io/${{ github.repository_owner.toLowerCase() }}/myapp-backend
 
