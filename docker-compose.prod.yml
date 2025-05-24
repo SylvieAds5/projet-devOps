@@ -1,5 +1,3 @@
-version: "3"
-
 services:
   backend:
     image: sylvieads5/projet-devops-backend
