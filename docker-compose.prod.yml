@@ -1,0 +1,51 @@
+version: "3"
+
+services:
+  backend:
+    image: sylvieads5/projet-devops-backend
+    container_name: event-backend
+    ports:
+      - "9001:9001"
+    environment:
+      - PORT=9001
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_NAME=eventdb
+    depends_on:
+      - postgres
+
+  frontend:
+    image: sylvieads5/projet-devops-frontend
+    container_name: event-frontend
+    ports:
+      - "8081:80"
+    depends_on:
+      - backend
+
+  reverse-proxy:
+    build:
+      context: .
+      dockerfile: Dockerfile.nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - frontend
+      - backend
+
+  postgres:
+    image: postgres:17
+    container_name: event-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: eventdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
